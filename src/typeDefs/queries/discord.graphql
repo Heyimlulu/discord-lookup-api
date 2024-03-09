@@ -1,0 +1,57 @@
+type Discord {
+  lookup(userId: String!): Snowflake!
+}
+
+type Snowflake {
+  user: User!
+  timeSinceCreation: TimeSinceCreation!
+}
+
+type TimeSinceCreation {
+  years: Int!
+  months: Int!
+  days: Int!
+  hours: Int!
+  minutes: Int!
+  seconds: Int!
+  milliseconds: Int!
+}
+
+type User {
+  id: String!
+  type: UserType!
+  username: String!
+  discriminator: String!
+  displayName: String
+  profileAppearance: ProfileAppearance
+  isBot: Boolean
+  isSystem: Boolean
+  badges: [Badge]
+  creationTimestamp: DateTime!
+  createdAt: DateTime!
+  accountAge: String!
+}
+
+enum UserType {
+  USER
+  BOT
+  SYSTEM
+}
+
+type ProfileAppearance {
+  avatar: MediaContent
+  banner: MediaContent
+  avatarDecoration: String
+  accentColor: String
+}
+
+type MediaContent {
+  id: String
+  url: String
+}
+
+type Badge {
+  title: String
+  description: String
+  url: String
+}
