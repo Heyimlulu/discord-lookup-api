@@ -101,12 +101,7 @@ const getDifference = (timestamp: number): number => {
 
 const discordResolvers = {
   Discord: {
-    lookup: (_, { userId }, context: SharedContext) => {
-      if (context.client !== "discord-lookup-app") {
-        throw new Error("Missing or invalid client referer header.");
-      }
-      return discord.getUser(userId);
-    },
+    lookup: (_, { userId }) => discord.getUser(userId),
   },
   Snowflake: {
     user: (parent) => parent,
