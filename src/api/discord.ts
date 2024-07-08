@@ -2,6 +2,7 @@ import axios from "axios";
 
 import "dotenv/config";
 import { validateResponse } from "../utils/httpClients";
+import { DiscordUser } from "../types/discordUser";
 
 const instance = axios.create({
   baseURL: "https://discord.com/api/v10",
@@ -10,7 +11,7 @@ const instance = axios.create({
   },
 });
 
-const getUserById = async (userId: string) => {
+const getUserById = async (userId: string): Promise<DiscordUser> => {
   return instance
     .get(`/users/${userId}`)
     .then((response) => validateResponse(response)?.data);

@@ -8,7 +8,6 @@ import {
   BADGES_FLAGS_DESC,
   BADGES_FLAGS,
 } from "../enums/discord";
-import { SharedContext } from "../utils/context";
 
 const getMediaContent = (user, type) => {
   switch (type) {
